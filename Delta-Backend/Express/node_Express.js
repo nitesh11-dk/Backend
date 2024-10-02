@@ -47,11 +47,33 @@ app.listen(3000 , ()=>{
     console.log("server is listening on the  port  3000")
 })
 
+
+// ! Routes 
+//  It is  process of selecting a path for traffic in a network or between or across multiple netwroks.
+
 app.get('/' , (req,res)=>{
     // console.log(req)
     res.send("Helloe kese ho ")
     res.send("<h1>Hello Express</h1>")
 })
-// here it will get error beaucse hum yak route par yakhii reponse bhej sakte hai so 
 
 
+
+//  ! Path parameter
+app.get("/:username",(req,res)=>{
+    let {username}  = req.params
+    res.send(username)
+})
+
+
+//  ! Query String
+app.get("/search",(req,res)=>{
+    console.log(req.query)
+    res.send(req.query)
+})
+// http://localhost:3000/search?username=apple&color=green
+
+//  Deafult route
+app.get("*",(req ,res )=>{
+    res.send("the path does not exits")
+})
