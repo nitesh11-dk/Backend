@@ -166,6 +166,7 @@ app.get("/search", (req, res) => {
 
 ### Default Route
 - If no other route matches, this default route handles the request.
+- Note that yisko last me likha hai sare routes ke bad qkii pahale rakha to vo path apane code me rakhne ke bad vhi vo does not exist batayega 
 ```javascript
 app.get("*", (req, res) => {
     res.send("The path does not exist");
