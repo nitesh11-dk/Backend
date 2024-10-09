@@ -20,7 +20,7 @@
 //  * require and module.exports 
 // agar humne kisi file me module.export use nahi kiya hai but humner yus file ko require kiya hai to hume yak empty object return milta hai 
 
-const  someval = require('./Nodejs/math')
+const  someval = require('./math')
 console.log(someval)
 // let res = someval.sum(200,3000);
 // console.log(res)
