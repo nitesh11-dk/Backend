@@ -7,28 +7,28 @@ import data from './Constants/data.json' assert { type: 'json' }; // it is worik
 
 const app = express()
 
-// Create __dirname in ES modules
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.set("view engine" ,"ejs")
+// agar deafult change karna hoto 
 app.set("views" , path.join(__dirname , "views")) 
 
+// to use static files
+app.use(express.static('public'))
+// agar deafult change karna hoto 
+// app.use(express.static(path.join(__dirname, 'public')))
 
 
-
-// console.log(data)
 
 app.get("/insta/:username" , (req,res)=>{
   let {username} = req.params ;
   res.render("insta" , {data: data[username]})
-
-  
 }
 )
 
 
 
-app.listen(3000 , ()=>{
+app.listen(4000 , ()=>{
     console.log("server is listening on the  port  3000")
 })
 

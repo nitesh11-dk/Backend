@@ -172,3 +172,7 @@ app.get("*", (req, res) => {
     res.send("The path does not exist");
 });
 ```
+---
+---
+ # EJS 
+ 
