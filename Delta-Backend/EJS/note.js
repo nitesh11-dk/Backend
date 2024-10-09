@@ -45,7 +45,28 @@ app.set("views" , path.join(__dirname , "views"))
 // _%> ‘Whitespace Slurping’ ending tag, removes all whitespace after it
 
 
-// to send data from js to ejs 
+// ? to use for loop and if else in ejs 
+
+
+// app.get("/" , (req,res)=>{
+//     let rolldice  = Math.floor(Math.random()*6)+1 ;
+//     let followers = ["alice","bob","charlie" ,"dan"]
+//     res.render("index" , {rolldice , followers})
+//   })
+  
+
+// <!-- <%  if(rolldice == 6){ %>
+//     <h2>Nice ! you have get 6 </h2>
+//     <%  } %> -->
+
+//     <% for (let follower of followers){ %>
+
+// <li><%= follower %></li>
+// <%} %>
+
+
+
+// ? to send data from js to ejs 
 
 // app.get("/" , (req,res)=>{
 //     res.render("index", {title:"hello" , name:"apple"})
