@@ -65,10 +65,10 @@
 
 // V1  
 //   conjection
-// app data to baut teji se bhej  rahe ho  router par , but roter dhere dhere data ko transmitt kar rahah hai 
+// app data to baut teji se bhej  rahe ho  router par , but roter dhere dhere data ko transmitt kar rahah hai (TCP IP) 
 
 //  V2 
-// kafi jada data bhejte ho , ajj  ke time ke hisab hai v2 vhi slow hai vut better hai v1 se 
+// kafi jada data bhejte ho , ajj  ke time ke hisab hai v2 vhi slow hai vut better hai v1 se (TCP IP)
 
 //  v3 
 // V3 has , TCPIP ,UDP
