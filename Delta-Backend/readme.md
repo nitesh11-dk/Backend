@@ -395,4 +395,39 @@ EJS allows you to include reusable sub-templates using the `include` tag, which 
 └── package.json            // Project configuration
 ```
 
+---
+## GET & POST 
+
+### GET Request:
+- **GET**: Fetch data from server.
+- Data sent via **query strings** (visible in URL, limited to string).
+- Example: `req.query` is used for accessing data.
+
+### POST Request:
+- **POST**: Send data to server (create/update).
+- Data sent via **request body** (supports any type of data).
+- By default, `req.body` is undefined unless configured.
+
+### Express Config:
+```javascript
+app.use(express.urlencoded({ extended: true })); // Handle URL-encoded form data
+app.use(express.json()); // Handle JSON data (like JSON APIs)
+```
+
+### Client-side Form:
+```html
+<form action="http://localhost:3000/register" method="post">
+  <input type="text" name="name" placeholder="Enter Name">
+  <input type="password" name="password" placeholder="Enter password">
+  <button>Register</button>
+</form>
+```
+
+### Server-side:
+```javascript
+app.post("/register", (req, res) => {
+  let { name, password } = req.body; // req.body contains form data
+  res.send("Hello, this is post method " + name); // Responding with the received name
+});
+```
 

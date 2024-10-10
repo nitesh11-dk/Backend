@@ -1,3 +1,4 @@
+
 //  using get method we can acees data from the req.query 
 
 //  we get that data in req.body but the express does't support this method or do not understand that stuff , so we need to do some configuration so express can read that data
