@@ -4,6 +4,7 @@
 * ESM --> EcmaScript Module
 
 # Module -1
+ -1
 ```markdown
 # LEC- 24: to 35
 ```
@@ -41,3 +42,25 @@
 
   ---
   
+# Module 2 
+  ```markdown
+# LEC- 36: to 39
+``` 
+1. **Node.js Overview**
+   - Key Features
+   - Why Node.js became popular
+
+2. **Non-blocking I/O**
+
+3. **Asynchronous Programming**
+
+4. **Libuv**
+
+5. **Event-Driven Architecture**
+
+6. **Single-Threaded Process with Event Loop**
+   - Thread
+   - Event Loop
+   - Middleman Role
+
+7. **Node.js is not Ideal for CPU-Intensive Work**
