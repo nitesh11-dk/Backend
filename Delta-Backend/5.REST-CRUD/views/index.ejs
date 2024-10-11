@@ -9,8 +9,10 @@
 <body>
   <div class="container">
     <h1>User Posts</h1>
-   <div class="cnt">
-    <div>
+  <a class="button btn-new" href="/posts/new">New Post</a>
+
+   
+    <div class="cnt">
       <% posts.forEach(function(post) { %>
         <div class="post-card">
           <h2 class="username"><%= post.username %></h2>
@@ -23,12 +25,7 @@
         </div>
       <% }); %>
     </div>
-<div>
-  <a class="button" href="/posts/new">New Post</a>
 
-</div>
-
-  </div>
   </div>
 </body>
 </html>

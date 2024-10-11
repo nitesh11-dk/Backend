@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import methodOverride from "method-override";
 
 const app = express();
-const port = 3000;
+const port = 3000 || 4000;
 
 // Get the directory name of the current module file
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
