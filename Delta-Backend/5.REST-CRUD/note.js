@@ -43,3 +43,7 @@
 //  _method ye jo form aur app.use me likha hai ye query parameter hai aur dono same hone chhaiye
 
 //  tum vo form ka use karke get post method bhej te ho na vo tum event listener par vhi laga satke ho aur fetch ya axios use kar satke ho  
+
+
+
+{/* <button onclick="window.history.back()">Back</button> */}
