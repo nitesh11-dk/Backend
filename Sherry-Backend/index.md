@@ -102,3 +102,21 @@
 1. **Sync vs Async Methods**
    - Synchronous Write (`fs.writeFileSync`)
    - Synchronous Read (`fs.readFileSync`)
+ - Here’s the index for **Module 5**:
+
+### Module 5
+```markdown
+# LEC- 56: to 70
+```
+1. **Introduction to HTTP Module in Node.js**
+   - Modules vs Packages
+   - Running the App with `npx nodemon`
+2. **Creating a Server in Node.js**
+3. **Understanding `req.url`**
+4. **Routing in Node.js**
+5. **HTTP Methods** (GET, POST, PUT, PATCH, DELETE)
+6. **HTTP Status Codes**
+   - 1XX (Informational)
+   - 2XX (Success)
+   - 3XX (Redirection)
+
