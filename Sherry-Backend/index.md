@@ -64,3 +64,41 @@
    - Middleman Role
 
 7. **Node.js is not Ideal for CPU-Intensive Work**
+
+
+# Module  
+  ```markdown
+# LEC- 40: to 45
+``` 
+
+1. **Installing Node.js**
+2. **What is npm (Node Package Manager)**
+3. **Installing npm Packages**
+4. **package.json Overview**
+5. **package-lock.json Explanation**
+
+
+# Module 3  
+  ```markdown
+# LEC- 45: to 55
+``` 
+1. **File System Overview (Node.js)**
+2. **Importing the `fs` Module**
+   - CommonJS Import
+   - ESM Import
+3. **Working with Files**
+   - Writing Files
+   - Reading Files
+   - Appending to Files
+   - Renaming Files
+   - Deleting Files (`fs.unlink`)
+4. **Working with Folders**
+   - Creating Folders
+   - Reading Folders
+   - Deleting Folders (`fs.rmdir`)
+   - Using `withFileTypes` to Detect Files/Folders
+   - Recursively Deleting Folders (`fs.rm`)
+   - Deprecation Warning: `fs.rmdir` to `fs.rm`**
+1. **Sync vs Async Methods**
+   - Synchronous Write (`fs.writeFileSync`)
+   - Synchronous Read (`fs.readFileSync`)
