@@ -67,6 +67,7 @@
 6. **HTTP Status Codes**
    - HTTP responses come with status codes to indicate the success or failure of a request. These codes are divided into categories:
 
+
 ### 1XX (Informational)
 - **100 Continue**: Correct – The server has received the request headers and the client should proceed to send the request body.
 - **101 Switching Protocols**: Correct – The server is switching protocols as requested by the client (e.g., from HTTP to WebSockets).
