@@ -50,7 +50,6 @@ Node.js is often said to be **single-threaded** because it handles multiple clie
 - **Middleman Role**: The thread in Node.js can be seen as a middleman. It receives requests from the client, delegates work to the event loop, and returns the response once the task is completed.
   
 **Note**: Node.js is not suitable for CPU-intensive tasks like **image processing** because it uses a single thread to handle requests, and CPU-bound tasks can block the event loop.
-
 ---
 
 ## 7. **Node.js is not Ideal for CPU-Intensive Work**
