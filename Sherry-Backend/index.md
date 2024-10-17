@@ -119,6 +119,3 @@
    - 1XX (Informational)
    - 2XX (Success)
    - 3XX (Redirection)
-
-
-
