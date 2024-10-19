@@ -108,14 +108,34 @@
 ```markdown
 # LEC- 56: to 70
 ```
-1. **Introduction to HTTP Module in Node.js**
-   - Modules vs Packages
-   - Running the App with `npx nodemon`
-2. **Creating a Server in Node.js**
-3. **Understanding `req.url`**
-4. **Routing in Node.js**
-5. **HTTP Methods** (GET, POST, PUT, PATCH, DELETE)
-6. **HTTP Status Codes**
-   - 1XX (Informational)
-   - 2XX (Success)
-   - 3XX (Redirection)
+1. **Introduction to HTTP Module in Node.js**  
+   - Modules vs Packages  
+   - Running the App with `npx nodemon`  
+2. **Creating a Server in Node.js**  
+3. **Understanding `req.url`**  
+4. **Routing in Node.js**  
+5. **HTTP Methods**  
+   - GET  
+   - POST  
+   - PUT  
+   - PATCH  
+   - DELETE  
+6. **HTTP Status Codes**  
+   - **1XX (Informational)**  
+   - **2XX (Success)**  
+   - **3XX (Redirection)**  
+   - **4XX (Client Errors)**  
+     - 400 Bad Request  
+     - 401 Unauthorized  
+     - 403 Forbidden  
+     - 404 Not Found  
+     - 405 Method Not Allowed  
+     - 409 Conflict  
+     - 429 Too Many Requests  
+   - **5XX (Server Errors)**  
+     - 500 Internal Server Error  
+     - 501 Not Implemented  
+     - 502 Bad Gateway  
+     - 503 Service Unavailable  
+     - 504 Gateway Timeout  
+     - 505 HTTP Version Not Supported  

@@ -57,4 +57,17 @@ if(req.url == '/read'){
 // * 308 ==>  the thing you ar looking for it is not available here it is shifted or  moved "PERMENANT Redirect"  then you will get a reponse of 308 
 
 
+// ? 4XX
+// * 400 ==> bad request  then you will get a reponse of 400
+// * 401 ==> unauthorized request  then you will get a reponse of 401
+// * 403 ==> forbidden request  then you will get a reponse of 403 --> app kuch yeses chize mang rahe ho and app ko access nahi kar sakte
+// * 404 ==> not found  then you will get a reponse of 404
+
+//  ? 5XX
+// * 500 ==> internal server error  then you will get a reponse of 500
+// * 501 ==> not implemented  then you will get a reponse of 501
+// * 502 ==> bad gateway  then you will get a reponse of 502 ( ye server ka upstream server fail ho gaya hai )
+// * 503 ==> service unavailable  then you will get a reponse of 503
+
+
 server.listen(3000)
