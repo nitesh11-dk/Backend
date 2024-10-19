@@ -158,3 +158,123 @@ CREATE TABLE employee (
 ```
 
 ---
+
+Here are organized notes on SQL keys, table creation, and basic SQL commands, along with examples to illustrate each concept:
+
+---
+
+# SQL Keys and Tables
+
+## 1. **Keys in SQL**
+
+### **Primary Key (PK)**
+- **Definition**: A primary key is a column (or set of columns) that uniquely identifies each row in a table.
+- **Characteristics**:
+  - There can be only one primary key per table.
+  - A primary key must be `NOT NULL`.
+  
+**Example**:
+```sql
+CREATE TABLE temp (
+    id INT NOT NULL,
+    PRIMARY KEY (id)
+);
+```
+
+### **Foreign Key (FK)**
+- **Definition**: A foreign key is a column (or set of columns) that creates a link between two tables by referencing the primary key in another table.
+- **Characteristics**:
+  - A foreign key can have duplicate and `NULL` values.
+  - There can be multiple foreign keys in a table.
+
+**Example**:
+```sql
+CREATE TABLE customer (
+    id INT PRIMARY KEY,
+    name VARCHAR(30)
+);
+
+CREATE TABLE temp (
+    cust_id INT,
+    FOREIGN KEY (cust_id) REFERENCES customer(id)
+);
+```
+
+## 2. **Creating Tables with Constraints**
+
+### **Unique Constraints**
+- Ensures that all values in a column are unique.
+  
+### **Check Constraints**
+- Ensures that all values in a column satisfy a specific condition.
+
+**Example**:
+```sql
+CREATE TABLE ussers (
+    id INT UNIQUE,
+    age INT,
+    name VARCHAR(30) NOT NULL,
+    email VARCHAR(30) UNIQUE,
+    followers INT DEFAULT 0,
+    following INT,
+    CONSTRAINT age_check CHECK (age >= 18),
+    PRIMARY KEY (id)
+);
+```
+
+## 3. **Table Queries**
+
+### **Insert Command**
+- **Purpose**: To insert data into a table.
+- **Syntax**:
+```sql
+INSERT INTO table_name (col1, col2, ...) 
+VALUES (val1, val2, ...);
+```
+
+**Example**:
+```sql
+INSERT INTO ussers (id, age, name, email, followers, following)
+VALUES (0, 45, 'niteshdk12', 'hello12@gmail.com', 34, 3433);
+```
+
+### **Select Command**
+- **Purpose**: To retrieve data from a table.
+- **Syntax**:
+```sql
+SELECT column1, column2 FROM table_name;
+```
+- **To show all columns**:
+```sql
+SELECT * FROM table_name;
+```
+- **To retrieve distinct values**:
+```sql
+SELECT DISTINCT column_name FROM table_name;
+```
+
+**Examples**:
+```sql
+SELECT id, name, email, age FROM ussers;
+
+SELECT * FROM ussers;
+
+SELECT DISTINCT age FROM ussers;  -- This retrieves unique ages
+```
+
+## 4. **Entity-Relationship (ER) Diagram**
+- An ER diagram visually represents the relationships between entities (tables) in a database.
+- **Entities**: Tables such as `users`, `posts`, etc.
+- **Relationships**: Links created via foreign keys.
+
+## 5. **Example of Creating a Post Table with Foreign Key**
+```sql
+CREATE TABLE post (
+    id INT PRIMARY KEY,
+    content VARCHAR(100),
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES ussers(id)
+);
+```
+
+---

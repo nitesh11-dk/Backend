@@ -53,3 +53,25 @@
 - **4.2** Example of Constraints
 
 ---
+
+## 5. **Introduction to SQL Keys**
+   - 1.1. Primary Key (PK)
+   - 1.2. Foreign Key (FK)
+
+2. **Creating Tables with Constraints**
+   - 2.1. Unique Constraints
+   - 2.2. Check Constraints
+
+3. **Table Queries**
+   - 3.1. Insert Command
+   - 3.2. Select Command
+
+4. **Entity-Relationship (ER) Diagram**
+   - 4.1. Overview of Entities and Relationships
+
+5. **Examples**
+   - 5.1. Creating a User Table
+   - 5.2. Creating a Post Table with Foreign Key
+
+---
+
