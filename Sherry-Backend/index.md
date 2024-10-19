@@ -104,9 +104,9 @@
  - Here’s the index for **Module 5**:
 
 
-### Module 5
+### Module 4
 ```markdown
-# LEC- 56: to 70
+# LEC- 56: to 76
 ```
 1. **Introduction to HTTP Module in Node.js**  
    - Modules vs Packages  
@@ -139,3 +139,28 @@
      - 503 Service Unavailable  
      - 504 Gateway Timeout  
      - 505 HTTP Version Not Supported  
+
+     
+ - ### Module 5
+```markdown
+# LEC- 76: to  85
+```
+ ## Middlewares 
+1. **Express**  
+   - Install  
+   - Usage  
+2. **express-session**  
+   - Install  
+   - Usage  
+3. **connect-flash**  
+   - Install  
+   - Usage  
+4. **CORS (Cross-Origin Resource Sharing)**  
+   - Install  
+   - Usage  
+5. **cookie-parser**  
+   - Install  
+   - Usage  
+6. **Morgan (HTTP Request Logger)**  
+   - Install  
+   - Usage  
