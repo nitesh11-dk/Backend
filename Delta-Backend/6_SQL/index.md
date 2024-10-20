@@ -113,3 +113,41 @@
 
 ---
 
+---
+
+1. **Update Queries (To Modify Existing Rows)**  
+   - Syntax  
+   - Example  
+   - Handling Safe Updates Mode  
+
+2. **Delete Queries (To Remove Specific Rows)**  
+   - Syntax  
+   - Example  
+   - Note on `WHERE` Clause  
+
+3. **Alter Table Queries (To Change Table Schema)**  
+   - Adding a Column  
+     - Syntax  
+     - Example  
+   - Dropping a Column  
+     - Syntax  
+     - Example  
+   - Renaming a Table  
+     - Syntax  
+     - Example  
+   - Renaming a Column  
+     - Syntax  
+     - Example  
+   - Modifying a Column (Datatype/Constraint Change)  
+     - Syntax  
+     - Example  
+
+4. **Truncate Table (To Delete All Data)**  
+   - Syntax  
+   - Note on Foreign Keys  
+   - Truncate vs. Drop  
+   - Example  
+
+---
+
+

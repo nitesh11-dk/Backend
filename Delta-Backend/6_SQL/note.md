@@ -506,4 +506,134 @@ LIMIT 2;
 ```
 
 ---
+---
+
+## **1. Update Queries (To Modify Existing Rows)**
+
+- **Syntax**:
+  ```sql
+  UPDATE table_name
+  SET column1 = value1, column2 = value2
+  WHERE condition;
+  ```
+- **Example**:
+  ```sql
+  UPDATE users 
+  SET followers = 600 
+  WHERE age = 45;
+  ```
+
+- **Handling Safe Updates Mode**:
+  - If SQL throws an **Error 1175** (safe update mode), you need to disable safe updates.
+  - **Command**:
+    ```sql
+    SET SQL_SAFE_UPDATES = 0;
+    ```
+  - Alternatively:
+    - Go to **Preferences -> SQL Editor**, disable safe mode, and reconnect to the database.
+
+---
+
+## **2. Delete Queries (To Remove Specific Rows)**
+
+- **Syntax**:
+  ```sql
+  DELETE FROM table_name 
+  WHERE condition;
+  ```
+- **Example**:
+  ```sql
+  DELETE FROM users 
+  WHERE age = 45;
+  ```
+
+- **Note**:  
+  If **no `WHERE` condition** is provided, all rows in the table will be deleted!
+
+---
+
+## **3. Alter Table Queries (To Change Table Schema)**
+
+### **Adding a Column**:
+- **Syntax**:
+  ```sql
+  ALTER TABLE table_name 
+  ADD COLUMN column_name datatype constraint;
+  ```
+- **Example**:
+  ```sql
+  ALTER TABLE users 
+  ADD COLUMN city VARCHAR(30) DEFAULT "pune";
+  ```
+
+### **Dropping a Column**:
+- **Syntax**:
+  ```sql
+  ALTER TABLE table_name 
+  DROP COLUMN column_name;
+  ```
+- **Example**:
+  ```sql
+  ALTER TABLE users 
+  DROP COLUMN age;
+  ```
+
+### **Renaming a Table**:
+- **Syntax**:
+  ```sql
+  ALTER TABLE table_name 
+  RENAME TO new_table_name;
+  ```
+- **Example**:
+  ```sql
+  ALTER TABLE users 
+  RENAME TO user;
+  ```
+
+### **Renaming a Column**:
+- **Syntax**:
+  ```sql
+  ALTER TABLE table_name 
+  CHANGE COLUMN old_name new_name new_datatype new_constraint;
+  ```
+- **Example**:
+  ```sql
+  ALTER TABLE user 
+  CHANGE COLUMN followers subs INT DEFAULT 0;
+  ```
+
+### **Modifying a Column (Datatype/Constraint Change)**:
+- **Syntax**:
+  ```sql
+  ALTER TABLE table_name 
+  MODIFY column_name new_datatype new_constraint;
+  ```
+- **Example**:
+  ```sql
+  ALTER TABLE user 
+  MODIFY subs INT DEFAULT 6;
+  ```
+
+---
+
+## **4. Truncate Table (To Delete All Data)**
+
+- **Syntax**:
+  ```sql
+  TRUNCATE TABLE table_name;
+  ```
+- **Note**:
+  - **Truncate** removes all data from the table but keeps the table structure.
+  - If a **foreign key** constraint references the table, truncation will throw an error.
+  - **Truncate vs. Drop**:
+    - **Truncate**: Clears all data from the table.
+    - **Drop**: Deletes the entire table, including its structure.
+
+- **Example**:
+  ```sql
+  TRUNCATE TABLE user;
+  ```
+  - **Error**: If a column from this table is used as a **foreign key** in another table, truncation will fail.
+
+---
 
