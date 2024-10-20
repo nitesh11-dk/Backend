@@ -140,3 +140,20 @@ Middleware request aur route ke beech ka ek **interceptor** hota hai, jo aapko r
   ```
 
 ---
+### ** Error handler  create at lasts **
+```javascript
+app.get("/about", (req, res,next) => {
+    try {
+        res.send(hello )
+    } catch (error) {
+        next(error);
+    }
+})
+app.use(( err ,req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    console.log(statusCode);
+    res.status(statusCode).send(err.message);
+    
+})
+```
+---
