@@ -14,9 +14,26 @@ app.get("/", (req, res) => {
     res.render("index");
 })
 
+
+
+
+//?   Error handler  create at lasts 
+
+app.get("/about", (req, res,next) => {
+    try {
+        res.send(hello )
+    } catch (error) {
+        next(error);
+    }
+})
+app.use(( err ,req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    console.log(statusCode);
+    res.status(statusCode).send(err.message);
+    
+})
+
+
 app.listen(3000, () => {
     console.log("Server is running on port 3000"); 
 });
- 
-
-
