@@ -278,3 +278,232 @@ CREATE TABLE post (
 ```
 
 ---
+
+
+## **1. WHERE Clause**
+The `WHERE` clause is used to filter records based on specific conditions.
+
+**Syntax:**  
+```sql
+SELECT column1, column2  
+FROM table_name  
+WHERE condition;
+```
+
+**Examples:**  
+```sql
+SELECT name, age  
+FROM users  
+WHERE age > 20;
+
+SELECT *  
+FROM users  
+WHERE followers > 200;
+```
+
+---
+
+### **Operators in WHERE Clause**
+
+#### **1. Arithmetic Operators**  
+- `+` (Addition)  
+- `-` (Subtraction)  
+- `*` (Multiplication)  
+- `/` (Division)  
+- `%` (Modulus)
+
+#### **2. Comparison Operators**  
+- `=` (Equal to)  
+- `!=` (Not equal to)  
+- `>` (Greater than)  
+- `<` (Less than)
+
+#### **3. Logical Operators**  
+- `AND`: Both conditions must be true.  
+- `OR`: At least one condition must be true.  
+- `NOT`: Negates the given condition.  
+- `IN`: Matches any value from a list.  
+- `BETWEEN`: Checks if a value falls within a given range.  
+- `LIKE`: Pattern matching.
+
+#### **4. Bitwise Operators**  
+- `&` (Bitwise AND)  
+- `|` (Bitwise OR)
+
+**Examples with Frequently Used Operators:**  
+```sql
+SELECT name, age, followers  
+FROM users  
+WHERE age BETWEEN 15 AND 30;
+
+SELECT name, age, followers  
+FROM users  
+WHERE email IN ('eve@example.com', 'diana@example.com', 'bob@example.com');
+
+SELECT name, age, email  
+FROM users  
+WHERE email NOT IN ('eve@example.com', 'diana@example.com', 'bob@example.com');
+```
+
+---
+
+## **2. LIMIT Clause**
+The `LIMIT` clause restricts the number of rows returned by a query.
+
+**Syntax:**  
+```sql
+SELECT column1, column2  
+FROM table_name  
+LIMIT number;
+```
+
+**Examples:**  
+```sql
+SELECT name, age, email  
+FROM users  
+LIMIT 3;
+
+SELECT name, age, email  
+FROM users  
+WHERE email NOT IN ('eve@example.com', 'diana@example.com')  
+LIMIT 3;
+```
+
+---
+
+## **3. ORDER BY Clause**
+The `ORDER BY` clause sorts the result in ascending (`ASC`) or descending (`DESC`) order.
+
+**Syntax:**  
+```sql
+SELECT column1, column2  
+FROM table_name  
+ORDER BY column_name [ASC|DESC];
+```
+
+- **Default:** Sorting is ascending (`ASC`) if not specified.  
+
+**Examples:**  
+```sql
+SELECT name, age, email  
+FROM users  
+ORDER BY name ASC;
+
+SELECT name, age, email  
+FROM users  
+ORDER BY name DESC;
+```
+
+**Important Note:**  
+- Use `ORDER BY` **before** `LIMIT`.  
+
+**Example (Correct Usage):**  
+```sql
+SELECT name, age, email  
+FROM users  
+ORDER BY name ASC  
+LIMIT 2;
+```
+
+---
+
+## **4. Aggregate Functions**
+Aggregate functions perform calculations on a set of values and return a single value.
+
+- **COUNT()**: Counts the number of rows.  
+- **MAX()**: Returns the maximum value.  
+- **MIN()**: Returns the minimum value.  
+- **SUM()**: Returns the sum of values.  
+- **AVG()**: Returns the average value.
+
+**Examples:**  
+```sql
+SELECT MAX(followers)  
+FROM users;
+
+SELECT SUM(age)  
+FROM users;
+```
+
+---
+
+## **5. GROUP BY Clause**
+The `GROUP BY` clause groups rows that have the same value in specific columns. Often used with aggregate functions.
+
+**Syntax:**  
+```sql
+SELECT column1, column2  
+FROM table_name  
+GROUP BY column1;
+```
+
+**Examples:**  
+```sql
+SELECT age, MAX(followers)  
+FROM users  
+GROUP BY age;
+```
+
+**Note:**  
+- Only the column used in `GROUP BY` can appear directly in the `SELECT` statement.  
+
+**Example (Invalid Usage):**  
+```sql
+SELECT age, name, MAX(followers)  
+FROM users  
+GROUP BY age;
+```
+**Explanation:**  
+- This will cause an error because only `age` can appear in `SELECT`, not `name`, unless used within an aggregate function.
+
+---
+
+## **6. HAVING Clause**
+The `HAVING` clause is used to apply conditions **after grouping** data with `GROUP BY`. It is similar to `WHERE`, but operates on groups rather than individual rows.
+
+**Syntax:**  
+```sql
+SELECT column1, column2  
+FROM table_name  
+GROUP BY column1  
+HAVING condition;
+```
+
+**Examples:**  
+```sql
+SELECT age, MAX(followers)  
+FROM users  
+GROUP BY age  
+HAVING MAX(followers) > 300;
+```
+
+**Difference Between WHERE and HAVING:**  
+- **`WHERE`** filters rows **before** grouping.  
+- **`HAVING`** filters groups **after** grouping.
+
+---
+
+## **7. General Query Order in SQL**
+The recommended order of clauses in SQL queries is:
+
+1. `SELECT` – Columns to be retrieved.  
+2. `FROM` – Table to query data from.  
+3. `WHERE` – Filter rows.  
+4. `GROUP BY` – Group rows by certain columns.  
+5. `HAVING` – Filter groups.  
+6. `ORDER BY` – Sort the result.  
+7. `LIMIT` – Limit the number of rows.
+
+**Example of Full Query with All Clauses:**  
+```sql
+SELECT age, MAX(followers)  
+FROM users  
+WHERE age > 20  
+GROUP BY age  
+HAVING MAX(followers) > 300  
+ORDER BY age DESC  
+LIMIT 2;
+```
+
+---
+
