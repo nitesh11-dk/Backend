@@ -1,0 +1,12 @@
+[
+  {
+    "type": "income",
+    "description": "apple",
+    "value": 1000
+  },
+  {
+    "type": "expense",
+    "description": "banana ",
+    "value": 300
+  }
+]

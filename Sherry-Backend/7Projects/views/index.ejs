@@ -92,7 +92,7 @@
     <% } else { %>
         <ul>
             <% for (let file of files) { %>
-                <li>
+                <li href="/view/<%= file %>">
                     <b><%= file %></b>
                     <div>
                         <a class="view-btn" href="/view/<%= file %>">View</a>
