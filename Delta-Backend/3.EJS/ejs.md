@@ -218,4 +218,3 @@ EJS allows you to include reusable sub-templates using the `include` tag, which 
 └── package.json            // Project configuration
 ```
 
-
