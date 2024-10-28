@@ -164,3 +164,29 @@
 6. **Morgan (HTTP Request Logger)**  
    - Install  
    - Usage. 
+ 
+
+## * 86 to 101   `postman` 
+## * 101 to 115 -- `project` 
+
+
+
+ - ### Module 6
+```markdown
+# LEC- 115: to  130
+```
+7. **Introduction**
+   - What is MongoDB?
+   - What is Mongoose?
+   - What is a Database?
+   - What is a Collection?
+8. **Connecting to MongoDB**
+   - Local Database Connection
+   - Online Database Connection
+9. **Defining a MongoDB Schema**
+10. **Setting Up the Express Application**
+11. **CRUD Operations**
+   - Create a User
+   - Read Users
+   - Update a User
+   - Delete a User
