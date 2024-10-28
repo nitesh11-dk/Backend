@@ -55,8 +55,7 @@
 
 <div class="container">
     <h1>Edit User</h1>
-    <form action="/edituser/<%= user.user_id %>" method="POST">
-        <input type="hidden" name="_method" value="PATCH"> <!-- Hidden input for method override -->
+    <form action="/edituser/<%= user.user_id %>?_method=PATCH" method="POST">
         
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" value="<%= user.username %>" required>
