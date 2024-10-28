@@ -150,4 +150,23 @@
 
 ---
 
+## SQL with NODE
+1. **Ways to Interact with MySQL**
+   - Workbench (GUI)
+   - Node.js Package
+   - CLI (Command Line Interface)
+   - SQL File Execution
+
+2. **MySQL Database Interaction with Node.js and Faker**
+   1. Setup and Connection
+   2. Creating the Users Table
+   3. Running SQL Commands
+   4. Generating Random User Data
+   5. Inserting Data into the Database
+      - Example of Direct Insertion
+      - Using the `runSQL` Function
+      - Inserting Multiple Rows
+   6. Using a Custom Function with Placeholders
+
+
 
