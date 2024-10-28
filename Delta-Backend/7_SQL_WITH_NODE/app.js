@@ -34,6 +34,9 @@ connection.query(sqlcommand, (error, results, fields) => {
 
 let query = 'INSERT INTO users (id, username,password , email) VALUES (?, ?,? ,? )';
 let arr = [20, 'john', 'johndoe', 'johndoe123'];
+let arr23 = [createRandomUser(),createRandomUser(),createRandomUser(),createRandomUser()];
+
+// console.log(arr23);
 
 function createRandomUser() {
     return [
@@ -46,14 +49,4 @@ function createRandomUser() {
   }
 
 
-  function insertRandomUser(query,arr) {
-    connection.query(query, arr, (error, results, fields) => {
-        if (error) throw error;
-        console.log('Data: ', results);
-        connection.end();
-    })  
-  }
 
-  runsql("SELECT *  FROM users")
-  insertRandomUser(query, createRandomUser())
-console.log(createRandomUser());
