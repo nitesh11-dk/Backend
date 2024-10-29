@@ -190,3 +190,24 @@
    - Read Users
    - Update a User
    - Delete a User
+
+
+ - ### Module 7
+```markdown
+# LEC- 130: to  155
+```
+1. Inserting Users
+2. Querying Users
+   - Common Operators
+   - Logical Operators
+   - Regular Expressions
+3. Data Validation with Joi
+   - Setup and Installation
+   - Defining the User Schema
+   - Creating the Validation Function
+   - Using Joi Validation in Express Routes
+4. Embedding Schemas
+5. Referencing Schemas
+6. Population
+7. Difference in Embedding and Referencing
+
