@@ -1,22 +1,6 @@
 import {faker} from '@faker-js/faker';
 import connection from './config/database.js';
 
-// let query = `CREATE TABLE users (
-//     user_id VARCHAR(50) PRIMARY KEY,
-//     username VARCHAR(50) NOT NULL UNIQUE,
-//     email VARCHAR(100) NOT NULL UNIQUE,
-//     avatar TEXT,
-//     password VARCHAR(255) NOT NULL,
-//     birthdate DATE,
-//     registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-// );
-// `
-// connection.query(query, (error, results, fields) => {
-//     if (error) {
-//         console.log(error);
-//     }
-//     console.log('Table : created successfully');
-// })
 
 
  export function createRandomUser() {
@@ -46,6 +30,23 @@ import connection from './config/database.js';
       })
 }
 
+
+let query = `CREATE TABLE users (
+    user_id VARCHAR(50) PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    avatar TEXT,
+    password VARCHAR(255) NOT NULL,
+    birthdate DATE,
+    registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+`
+connection.query(query, (error, results, fields) => {
+    if (error) {
+        console.log(error);
+    }
+    console.log('Table : created successfully');
+})
 
 export function clearTable(){
     connection.query('TRUNCATE TABLE users ', (error, results, fields) => {
