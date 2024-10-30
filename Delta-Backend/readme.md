@@ -430,4 +430,6 @@ app.post("/register", (req, res) => {
   res.send("Hello, this is post method " + name); // Responding with the received name
 });
 ```
+## SQL 
 
+## MONGO-DB 
