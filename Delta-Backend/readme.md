@@ -430,6 +430,242 @@ app.post("/register", (req, res) => {
   res.send("Hello, this is post method " + name); // Responding with the received name
 });
 ```
-## SQL 
 
+
+## SQL 
 ## MONGO-DB 
+
+---
+---
+
+# Express Middleware and Error Handling Notes
+
+## **Index**
+
+1. [Basic Setup](#1-basic-setup)
+2. [Middleware Basics](#2-middleware-basics)
+3. [Example of a Basic Middleware](#3-example-of-a-basic-middleware)
+4. [Chaining Middlewares](#4-chaining-middlewares)
+5. [Middleware for Specific Routes](#5-middleware-for-specific-routes)
+6. [Middleware as Functions](#6-middleware-as-functions)
+7. [Error-Handling Middleware](#7-error-handling-middleware)
+8. [Normal Error Handling](#1-normal-error-handling)
+9. [Custom Error Class](#2-custom-error-class)
+10. [Custom Error Handling Middleware](#3-custom-error-handling-middleware)
+11. [General Error Handling Middleware](#4-general-error-handling-middleware)
+12. [Handling Asynchronous Errors](#5-handling-asynchronous-errors)
+13. [Async Wrapper Function](#6-async-wrapper-function)
+14. [Mongoose Errors](#7-mongoose-errors)
+
+---
+
+# Express Middleware Notes
+
+### **1. Basic Setup**
+To start with Express, we need to import the required modules and initialize an Express app instance:
+
+- **Import Modules**: 
+  ```javascript
+  import express from "express";
+  import { log } from "console";
+  ```
+
+- **Initialize the App**: 
+  ```javascript
+  const app = express();
+  ```
+
+### **2. Middleware Basics**
+Middleware functions are functions that have access to the request object (`req`), the response object (`res`), and the `next` function in the application’s request-response cycle. Middleware can perform various tasks, such as:
+
+- Logging requests
+- Authenticating users
+- Parsing JSON or URL-encoded payloads
+- Adding or modifying properties in the request
+
+After the middleware function performs its task, you call `next()` to pass control to the next middleware in the stack.
+
+### **3. Example of a Basic Middleware**
+A simple middleware that logs a message each time a request is received:
+
+```javascript
+app.use((req, res, next) => {
+    console.log("Logging...");
+    next(); // Proceeds to the next middleware or route handler
+});
+```
+
+> **Note**: Anything written after `next()` in a middleware function won't be executed, so it’s best to treat `next()` as the end of that middleware’s operations.
+
+### **4. Chaining Middlewares**
+Middleware is executed sequentially in the order they are defined. This means middleware can be chained for every request, regardless of the route or error.
+
+```javascript
+app.use((req, res, next) => {
+    console.log("Logging middleware 1...");
+    next();
+});
+
+app.use((req, res, next) => {
+    console.log("Logging middleware 2...");
+    next();
+});
+```
+
+### **5. Middleware for Specific Routes**
+Middleware can be applied only to specific routes. This example applies middleware to the `/users` path:
+
+```javascript
+app.use("/users", (req, res, next) => {
+    console.log("Users middleware");
+    next();
+});
+```
+
+### **6. Middleware as Functions**
+Middleware functions can be declared separately and reused across different routes. Here’s an example of a `logger` middleware:
+
+```javascript
+let logger = (req, res, next) => {
+    req.time = Date.now().toString();
+    console.log(req.method, req.path, req.hostname, req.time);
+    next();
+};
+```
+
+You can now use this middleware in a route handler like so:
+
+```javascript
+app.get("/", logger, (req, res) => {
+    console.log("Hello World!");
+    res.send("Hello World!");
+});
+```
+
+> **Key Point**: Defining middleware functions at the top of the file is recommended for better visibility and maintainability.
+
+### **7. Error-Handling Middleware**
+If none of the defined routes match, an error-handling middleware can respond with a "page not found" message:
+
+```javascript
+app.use((req, res) => {
+    res.status(404).send("Page not found");
+});
+```
+
+
+---
+
+# **Express Error Handling Notes**
+
+### **1. Normal Error Handling**
+Error-handling middleware functions in Express are distinguished by having **four parameters**: `err`, `req`, `res`, and `next`. They should be defined **after** all route definitions to handle errors that occur during route processing.
+
+#### **Example**
+```javascript
+app.get("/", (req, res) => {
+    console.log("Hello World!");
+    // Deliberately causing a ReferenceError by logging an undefined variable 'a'
+    log(a); 
+    res.send("Hello World!");
+});
+
+// Error-handling middleware
+app.use((err, req, res, next) => {
+    console.log("=============== ERROR HANDLED ================");
+    console.error(err.stack); // Logs the error stack for debugging
+    res.status(500).send("Something went wrong!");
+});
+```
+
+### **2. Custom Error Class**
+When handling different types of errors, creating custom error classes provides better control and structured error management.
+
+#### **Example**
+```javascript
+class MyError extends Error {
+    constructor(statusCode, message) {
+        super(message);
+        this.statusCode = statusCode;
+    }
+}
+```
+
+### **3. Custom Error Handling Middleware**
+You can throw a custom error within a middleware and handle it down the middleware chain using the `next()` function.
+
+#### **Example**
+```javascript
+app.use((req, res, next) => {
+    // Throw a custom error
+    throw new MyError(404, "Page not found");
+    next();
+});
+```
+
+### **4. General Error Handling Middleware**
+This middleware extracts and handles error properties (`message` and `statusCode`) and sends a structured response.
+
+#### **Example**
+```javascript
+app.use((err, req, res, next) => {
+    const { message = "An error occurred", statusCode = 500 } = err;
+    console.error(err); // Log the error details for debugging
+    res.status(statusCode).json({
+        success: false,
+        message,
+        ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
+    });
+});
+```
+
+### **5. Handling Asynchronous Errors**
+Express won’t automatically catch errors inside async functions, so you need to manually handle them by calling `next(err)`.
+
+#### **Example**
+```javascript
+app.get("/async-error", async (req, res, next) => {
+    try {
+        const result = await someAsyncFunction();
+        if (!result) {
+            throw new MyError(404, "Data not found");
+        }
+        res.send(result);
+    } catch (err) {
+        next(err);
+    }
+});
+```
+
+### **6. Async Wrapper Function**
+A utility function to wrap an asynchronous route and automatically catch errors, passing them to the next middleware.
+
+#### **Example**
+```javascript
+function asyncWrapper(fn) {
+    return function (req, res, next) {
+        fn(req, res, next).catch(next);
+    };
+}
+
+// Use asyncWrapper to handle errors
+app.get('/user/:id', asyncWrapper(async (req, res) => {
+    const userId = req.params.id;
+    const user = await getUser(userId);
+    res.json(user);
+}));
+```
+
+### **7. Mongoose Errors**
+Mongoose-specific errors (like `ValidationError`) should be handled separately to provide clear feedback.
+
+#### **Example**
+```javascript
+app.use((err, req, res, next) => {
+    if (err.name === "ValidationError") {
+        err = new MyError(400, "Validation failed");
+    }
+    next(err);
+});
+```
+
